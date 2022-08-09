@@ -1,0 +1,22 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    New Page
+{% endblock %}
+
+{% block body %}
+    <h1>Edit Page</h1>
+
+    <form action="{% url 'editpage' %}" method="POST">
+      {% csrf_token %}
+      <label for="title">Title:</label><br>
+      <input type="text" value="{{ title }}" disabled style="margin-bottom: 20px;"><br>
+      <input type="hidden" name="title" value="{{ title }}" >
+      <p style="color: {{ color }};">
+        <i>{{ mes }}</i><b><i>{{ sa }}</i></b><i>{{ ge }}</i>
+      </p>
+      <label>Type your text below:</label><br>
+      <textarea name="text" style="max-height: 200px;" required>{{ content }}</textarea><br>
+      <input type="submit" id="text" value="Save">
+    </form>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Results for {{ title }} - Wiki
+{% endblock %}
+
+{% block body %}
+    <h1>Sorry</h1>
+    <p>There isn't any entry called "<i>{{ title }}</i>".</p>
+    <p>But your search was found in the following results:</p>
+
+    <ul>
+        {% for i in list_sm %}
+        <a href="{{ i }}">
+            <li>
+                {% for j in i %}<!--
+                 -->{% if j in title|lower %}<!--
+                     --><b>{{ j }}</b><!--
+                 -->{% elif j in title|upper %}<!--
+                     --><b>{{ j }}</b><!--
+                 -->{% else %}<!--
+                     -->{{ j }}<!--
+                 -->{% endif %}<!--
+             -->{% endfor %}
+            </li>
+        </a>
+        {% endfor %}
+    </ul>
+
+    <div style="padding-top: 20px; padding-left: 15px;">
+        {% load static %}
+        <img style="float:left;" src="{% static 'encyclopedia/madjum.gif' %}" alt="search" width="200">
+    </div>
+{% endblock %}

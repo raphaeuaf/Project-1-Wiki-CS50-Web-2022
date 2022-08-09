@@ -1,0 +1,20 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Encyclopedia
+{% endblock %}
+
+{% block body %}
+    <h1>All Pages</h1>
+    {% load static %}
+    <img style="float:right; margin-right: 60%;" src="{% static 'encyclopedia/bookt.gif' %}" alt="search" width="200">
+
+    <ul>
+        {% for entry in entries %}
+            <a href="{{ entry }}">
+                <li>{{ entry }}</li>
+            </a>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

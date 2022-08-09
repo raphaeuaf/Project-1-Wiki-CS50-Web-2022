@@ -1,0 +1,27 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    New Page
+{% endblock %}
+
+{% block body %}
+    <h1>New Page</h1>
+
+    <form action="{% url 'newpage' %}" method="POST">
+      {% csrf_token %}
+      <label for="title">Title:</label><br>
+      <input type="text" name="title" value="{{ sa }}" style="margin-bottom: 20px;"><br>
+      <p style="color: {{ color }};">
+        <i>{{ mes }}</i><b><i>{{ sa }}</i></b><i>{{ ge }}</i>
+      </p>
+      <label>Type your text below:</label><br>
+      <textarea name="text" style="max-height: 200px;">{{ content }}</textarea><br>
+      <input type="submit" id="text" value="Save">
+    </form>
+    {% if mes %}
+      <div style="padding-top: 20px; padding-left: 15px;">
+        {% load static %}
+        <img style="float:left;" src="{% static 'encyclopedia/madjum.gif' %}" alt="search" width="200">
+      </div>
+    {% endif %}
+{% endblock %}
